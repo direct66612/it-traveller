@@ -1,6 +1,7 @@
-<script setup></script>
+<script setup>
+import HomapageView from "./views/HomepageView.vue";
+</script>
 
 <template>
-  <span class="btn m-10 underline">hello</span>
+  <HomapageView />
 </template>
-<style scoped></style>
