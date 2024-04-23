@@ -1,7 +1,7 @@
 <script setup>
-// import RegistrationForm from "./components/Auth/RegistrationForm/RegistrationForm";
+import RegistrationForm from "./components/Auth/RegistrationForm/RegistrationForm.vue";
 </script>
 
 <template>
-  <!-- <RegistrationForm /> -->
+  <RegistrationForm @submit="console.log" />
 </template>
