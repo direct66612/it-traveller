@@ -1,7 +1,7 @@
 <script setup>
-import HomepageView from "./views/HomepageView.vue";
+import AuthView from "./views/AuthView.vue";
 </script>
 
 <template>
-  <HomepageView />
+  <AuthView />
 </template>
