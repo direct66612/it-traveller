@@ -1,7 +1,7 @@
 <script setup>
-import AuthView from "./views/AuthView.vue";
+import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <AuthView />
+  <RouterView />
 </template>
