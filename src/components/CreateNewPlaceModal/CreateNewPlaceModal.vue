@@ -10,6 +10,14 @@ const props = defineProps({
     default: false,
     type: Boolean,
   },
+  isLoading: {
+    default: false,
+    type: Boolean,
+  },
+  hasError: {
+    default: false,
+    type: Boolean,
+  },
 });
 const emit = defineEmits(["close", "submit"]);
 const formData = reactive({
@@ -25,11 +33,19 @@ const uploadText = computed(() => {
 const handleUpload = (url) => {
   formData.img = url;
 };
+const resetForm = () => {
+  formData.description = "";
+  formData.img = "";
+  formData.title = "";
+};
 </script>
 
 <template>
   <IModal v-if="props.isOpen" @close="emit('close')">
-    <form @submit.prevent="emit('submit', formData)" class="min-w-[420px]">
+    <form
+      @submit.prevent="emit('submit', formData, resetForm)"
+      class="min-w-[420px]"
+    >
       <div class="flex gap-1 justify-center font-bold text-center mb-10">
         <MarkerIcon /> Додати маркер
       </div>
@@ -49,7 +65,10 @@ const handleUpload = (url) => {
         />
         <InputImage @uploaded="handleUpload">{{ uploadText }}</InputImage>
       </div>
-      <IButton class="w-full" variant="gradient">Додати</IButton>
+      <IButton class="w-full" variant="gradient" :is-loading="props.isLoading"
+        >Додати</IButton
+      >
+      <div v-if="props.hasError" class="text-red-500">Щось пішло не так</div>
     </form>
   </IModal>
 </template>
